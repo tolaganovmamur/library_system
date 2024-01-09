@@ -1,0 +1,38 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    tomcat:
+      max-idle: 10
+      min-idle: 1
+    hikari:
+      connection-timeout: 30000
+      minimum-idle: 1
+      maximum-pool-size: 3
+      idle-timeout: 5000
+      max-lifetime: 1000
+      auto-commit: true
+    url: jdbc:postgresql://localhost:5432/library
+    username: postgres
+    password: 1234
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  servlet:
+
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  sql:
+    init:
+      mode: never
+logging:
+  file:
+    name: library.log
